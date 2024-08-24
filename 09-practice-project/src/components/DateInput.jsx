@@ -1,7 +1,10 @@
 import React, { useReducer } from "react";
 import { forwardRef, useRef, useImperativeHandle } from "react";
 
-const Input = forwardRef(function Input({ label, isTextArea, ...props }, ref) {
+const DateInput = forwardRef(function DateInput(
+  { label, isTextArea, ...props },
+  ref
+) {
   const classes =
     "w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-blue-500 focus:border-stone-600";
   return (
@@ -9,13 +12,9 @@ const Input = forwardRef(function Input({ label, isTextArea, ...props }, ref) {
       <label className="text-sm uppercase font-bold text-stone-500">
         {label}
       </label>
-      {isTextArea ? (
-        <textarea ref={ref} className={classes} {...props} />
-      ) : (
-        <input ref={ref} className={classes} {...props} />
-      )}
+      <input type="date" ref={ref} className={classes} {...props} />
     </p>
   );
 });
 
-export default Input;
+export default DateInput;

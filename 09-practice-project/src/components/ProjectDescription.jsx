@@ -1,11 +1,6 @@
 import React, { act } from "react";
 import { forwardRef, useRef, useImperativeHandle } from "react";
 
-// const ProjectDescription = forwardRef(function ProjectDescription(
-//   { projectKey, projects },
-//   ref
-// ) {});
-
 export default function ProjectDescription({
   projectKey,
   projects,
@@ -16,11 +11,15 @@ export default function ProjectDescription({
 
   return (
     <>
-      <div className="flex text-center flex-col gap-1 my-4">
-        <h2>{activeProject.name}</h2>
-        <p>{activeProject.description}</p>
-        <br />
-        <h4>Tasks</h4>
+      <div className="flex text-left flex-col gap-1 my-4">
+        <h3 className="text-xl font-bold text-stone-500">
+          {activeProject.name}
+        </h3>
+        <p className="text-l font-bold text-stone-500 my-4 w-3/4">
+          {activeProject.description}
+        </p>
+        <hr className="my-2 border-stone-500 border-t-100 w-3/4" />
+        <h3 className="text-xl font-bold text-stone-500 my-3">Tasks</h3>
         <div className="flex items-center space-x-2">
           <input
             type="text"
