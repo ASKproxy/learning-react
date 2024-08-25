@@ -1,13 +1,10 @@
-import { createContext, useState } from "react";
-import { DUMMY_PRODUCTS } from "../dummy-products";
+import { useState } from 'react';
 
-export const CartContext = createContext({
-  items: [],
-  addItemToCart: () => {},
-  updateItemQuantity: () => {},
-});
+import Header from './components/Header.jsx';
+import Shop from './components/Shop.jsx';
+import { DUMMY_PRODUCTS } from './dummy-products.js';
 
-export default function CartContextProvider({ children }) {
+function App() {
   const [shoppingCart, setShoppingCart] = useState({
     items: [],
   });
@@ -68,13 +65,15 @@ export default function CartContextProvider({ children }) {
     });
   }
 
-  const ctxValue = {
-    items: shoppingCart.items,
-    addItemToCart: handleAddItemToCart,
-    updatedItemQuantity: handleUpdateCartItemQuantiy,
-  };
-
   return (
-    <CartContext.Provider value={ctxValue}>{children}</CartContext.Provider>
+    <>
+      <Header
+        cart={shoppingCart}
+        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
+      />
+      <Shop onAddItemToCart={handleAddItemToCart} />
+    </>
   );
 }
+
+export default App;
